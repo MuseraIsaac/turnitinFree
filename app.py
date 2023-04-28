@@ -25,4 +25,4 @@ def check_plagiarism():
     return render_template('result.html', result=result, banner=banner)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000)
