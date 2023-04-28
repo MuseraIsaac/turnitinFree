@@ -2,11 +2,11 @@ import requests
 import json
 import pyfiglet
 
-banner = pyfiglet.figlet_format("Turnitin")
+banner = pyfiglet.figlet_format("EduElites")
 
 print(banner)
 
-text_to_check = input("[?] Input text to check with Turnitin > ")
+text_to_check = input("[?] Input text to check with EduElites > ")
 
 burp0_url = "https://papersowl.com:443/plagiarism-checker-send-data"
 
@@ -20,6 +20,7 @@ r = requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=
 
 result = json.loads(r.text)
 
-print("\n[!] Word count : " + str(result["words_count"]))
-print("\n[!] Turnitin index : " + str(100 - float(result["percent"])))
-print("\n[!] Matches : " + str(result["matches"]))
+#print("\n[!] Word count : " + str(result["words_count"]))
+#print("\n[!] Turnitin index : " + str(100 - float(result["percent"])))
+#print("\n[!] Matches : " + str(result["matches"]))
+print(result)
