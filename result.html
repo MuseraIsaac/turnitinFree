@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>EduElites Plagiarism Checker</title>
+</head>
+<body>
+<h1>Plagiarism Check Result</h1>
+<p>
+    The plagiarism check result for the entered text is:
+    {% if result['error_code'] == 0 %}
+    <strong>Not Plagiarized</strong>
+    {% else %}
+    <strong>Plagiarized</strong>
+    {% endif %}
+</p>
+<hr>
+<h2>Details</h2>
+<ul>
+    <li>Originality score: {{ result['percent'] }}%</li>
+    <li>Total number of matching sources: {{ result['matches']|length }}</li>
+    <li>Total number of sources searched: {{ result['matches']|length }}</li>
+</ul>
+<hr>
+<h2>Matching Sources</h2>
+<ul>
+    {% for source in result['matches'] %}
+    <li>
+        <a href="{{ source['url'] }}" target="_blank">{{ source['url'] }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<hr>
+<h2>Highlighted Text</h2>
+<p>
+    {% for highlight in result['highlight'] %}
+    {{ result['text'][:highlight[0]|int] }}<span style="background-color: yellow;">{{ result['text'][highlight[0]|int:highlight[1]|int] }}</span>{{ result['text'][highlight[1]|int:] }}
+    {% endfor %}
+</p>
+</body>
+</html>
